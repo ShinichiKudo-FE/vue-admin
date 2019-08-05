@@ -6,7 +6,7 @@
             </div>
             <el-form-item prop="username">
                 <span class="svg-container">
-                    <svg-icon icon-class="user"></svg-icon>
+                    <svg-icon icon-class="user"/>
                 </span>
                 <el-input
                     ref="username"
@@ -21,18 +21,52 @@
             <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
                 <el-form-item prop="password">
                     <span class="svg-container"> 
-                        
+                        <svg-icon icon-class="password"></svg-icon>
+                    </span>
+                    <el-input
+                        ref="password"
+                        v-model="loginForm.password"
+                        :type="passwordType"
+                        placeholder="请输入密码"
+                        name="password"
+                        tabindex="2"
+                        autocomplete="on"                    
+                    />
+                    <span class="show-pwd" @click="showPwd">
+                        <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
                     </span>
                 </el-form-item> 
             </el-tooltip>
-            
+            <el-button></el-button>
         </el-form>
     </div>
 </template>
 
 <script>
     export default {
-        
+        name: 'Login',
+        data(){
+            return{
+                loginForm:{
+                    username:'admin',
+                    password:'111'
+                },
+                passwordType:'password',
+                capsTooltip:false
+            }
+        },
+        methods:{
+            showPwd(){
+                if(this.passwordType === 'password'){
+                    this.passwordType = ''
+                }else{
+                    this.passwordType = 'password'
+                }
+                this.$nextTick(()=>{
+                    this.$refs.password.focus()
+                })
+            }
+        }
     }
 </script>
 <style lang="scss">

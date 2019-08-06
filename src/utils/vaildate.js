@@ -7,6 +7,7 @@ export function validUsername(str) {
     return valid_map.indexOf(str.trim()) >= 0
 }
 
+// 检查路径是否正确
 export function isExternal(path) {
     return /^(https?:|mailto:|tel:)/.test(path)
 }

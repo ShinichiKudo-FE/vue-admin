@@ -1,6 +1,6 @@
 <template>
     <div class="app-wrapper">
-        <Sidebar/>
+        <Sidebar class="sidebar-container"/>
     </div>
 </template>
 
@@ -18,4 +18,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    @import "~@/styles/variables.scss";
 </style>

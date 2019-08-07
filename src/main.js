@@ -11,6 +11,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import '@/styles/index.scss' // global css
 
 import './icons' // icon
+import './permission' //权限问题
 
 Vue.use(Element, {
     size: Cookies.get('size') || 'medium' // set element-ui default size

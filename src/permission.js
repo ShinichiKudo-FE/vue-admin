@@ -23,6 +23,7 @@ router.beforeEach(async (to, from, next) => {
             // const hasRoles = store.getters.roles && store.getters.roles.length > 0;
             const hasRoles = true;
             if (hasRoles) {
+                store.dispatch('permission/generateRoutes', ['admin']);
                 next()
             } else {
                 try {

@@ -9,8 +9,9 @@
             label-position="left"
         >
             <div class="title-container">
-                <h3 class="title">登陆界面</h3>
+                <h3 class="title">登录界面</h3>
             </div>
+
             <el-form-item prop="username">
                 <span class="svg-container">
                     <svg-icon icon-class="user" />
@@ -25,10 +26,11 @@
                     autocomplete="on"
                 />
             </el-form-item>
+
             <el-tooltip v-model="capsTooltip" content="Caps lock is On" placement="right" manual>
                 <el-form-item prop="password">
                     <span class="svg-container">
-                        <svg-icon icon-class="password"></svg-icon>
+                        <svg-icon icon-class="password" />
                     </span>
                     <el-input
                         :key="passwordType"
@@ -48,6 +50,7 @@
                     </span>
                 </el-form-item>
             </el-tooltip>
+
             <el-button
                 :loading="loading"
                 type="primary"
@@ -60,6 +63,7 @@
 
 <script>
 import { validUsername } from "@/utils/vaildate";
+
 export default {
     name: "Login",
     data() {
@@ -82,28 +86,56 @@ export default {
         return {
             loginForm: {
                 username: "admin",
-                password: "111"
+                password: "111111"
             },
-            passwordType: "password",
-            capsTooltip: false,
-            loading: false,
             loginRules: {
                 username: [
                     {
-                        require: true,
+                        required: true,
                         trigger: "blur",
                         validator: validateUsername
                     }
                 ],
                 password: [
                     {
-                        require: true,
+                        required: true,
                         trigger: "blur",
                         validator: validatePassword
                     }
                 ]
-            }
+            },
+            passwordType: "password",
+            capsTooltip: false,
+            loading: false,
+            showDialog: false,
+            redirect: undefined,
+            otherQuery: {}
         };
+    },
+    watch: {
+        $route: {
+            handler: function(route) {
+                const query = route.query;
+                if (query) {
+                    this.redirect = query.redirect;
+                    this.otherQuery = this.getOtherQuery(query);
+                }
+            },
+            immediate: true
+        }
+    },
+    created() {
+        // window.addEventListener('storage', this.afterQRScan)
+    },
+    mounted() {
+        if (this.loginForm.username === "") {
+            this.$refs.username.focus();
+        } else if (this.loginForm.password === "") {
+            this.$refs.password.focus();
+        }
+    },
+    destroyed() {
+        // window.removeEventListener('storage', this.afterQRScan)
     },
     methods: {
         checkCapslock({ shiftKey, key } = {}) {
@@ -132,26 +164,39 @@ export default {
             });
         },
         handleLogin() {
-            /* this.$refs.loginForm.vaildate(vaild => {
-                if (vaild) {
-                    this.loading = true
-                    this.$store.dispatch('user/login',this.loginForm)
-                    .then(()=>{
-                        this.$router.push({path:this.redirect || '/',query:this.otherQuery})
-                        this.loading = false
-                    })
-                    .catch(()=>{
-                        this.loading = true;
-                    })
+            this.$refs.loginForm.validate(valid => {
+                if (valid) {
+                    this.loading = true;
+                    this.$store
+                        .dispatch("user/login", this.loginForm)
+                        .then(() => {
+                            this.$router.push({
+                                path: this.redirect || "/",
+                                query: this.otherQuery
+                            });
+                            this.loading = false;
+                        })
+                        .catch(() => {
+                            this.loading = false;
+                        });
                 } else {
-                    console.log("错误提示")
+                    console.log("error submit!!");
                     return false;
                 }
-            }); */
+            });
+        },
+        getOtherQuery(query) {
+            return Object.keys(query).reduce((acc, cur) => {
+                if (cur !== "redirect") {
+                    acc[cur] = query[cur];
+                }
+                return acc;
+            }, {});
         }
     }
 };
 </script>
+
 <style lang="scss">
 /* 修复input 背景不协调 和光标变色 */
 /* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */

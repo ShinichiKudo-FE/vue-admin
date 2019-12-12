@@ -12,11 +12,11 @@ const state = {
 }
 
 const mutations = {
-    CHANGE_SETTING:((state,{key,value})=>{
-        if(state.hasOwnProperty(key)){
-            state[key] = value;
-        }
-    })
+  CHANGE_SETTING: (state, { key, value }) => {
+    if (state.hasOwnProperty(key)) {
+      state[key] = value
+    }
+  }
 }
 
 const actions = {

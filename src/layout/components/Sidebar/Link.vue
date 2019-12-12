@@ -5,8 +5,9 @@
 </template>
 
 <script>
-    import { isExternal } from '@/utils/vaildate'
-    export default {
+import { isExternal } from '@/utils/validate'
+
+export default {
         props:{
             to:{
                 type: String,

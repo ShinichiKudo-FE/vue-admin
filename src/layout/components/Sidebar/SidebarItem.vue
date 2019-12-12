@@ -57,7 +57,6 @@
                         return false;
                     }else{
                         this.onlyOneChild  = item;
-                        console.log(this.onlyOneChild)
                         return true;
                     }
                 })

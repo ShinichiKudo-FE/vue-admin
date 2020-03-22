@@ -1,10 +1,10 @@
-import defaultSetting from '@/settings';
+import defaultSettings from '@/settings'
 
-const title = defaultSetting.title || 'Vue Admin';
+const title = defaultSettings.title || 'Vue Admin'
 
-export default function getPageTitle(pageTitle){
-    if(pageTitle){
-        return `${pageTitle}-${title}`;
-    }
-    return `${title}`;
+export default function getPageTitle(pageTitle) {
+  if (pageTitle) {
+    return `${pageTitle} - ${title}`
+  }
+  return `${title}`
 }

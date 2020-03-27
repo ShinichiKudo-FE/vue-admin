@@ -182,7 +182,19 @@ export const asyncRoutes = [
       }
     ]
   },
-  // 404 page must be placed at the end !!!
+  {
+    path: '/tab',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/tab/index'),
+        name: 'Tab',
+        meta: { title: 'Tab', icon: 'tab', noCache: true }
+      }
+    ]
+  },
+  // 404 页面必须放到最后
   { path: '*', redirect: '/404', hidden: true }
 ]
 

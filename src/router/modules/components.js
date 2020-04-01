@@ -30,18 +30,18 @@ const componentsRouter = {
         //     name: 'JsonEditorDemo',
         //     meta: { title: 'JSON Editor' }
         // },
-        // {
-        //     path: 'split-pane',
-        //     component: () => import('@/views/components-demo/split-pane'),
-        //     name: 'SplitpaneDemo',
-        //     meta: { title: 'SplitPane' }
-        // },
-        // {
-        //     path: 'avatar-upload',
-        //     component: () => import('@/views/components-demo/avatar-upload'),
-        //     name: 'AvatarUploadDemo',
-        //     meta: { title: 'Upload' }
-        // },
+        {
+            path: 'split-pane',
+            component: () => import('@/views/components-demo/split-pane'),
+            name: 'SplitpaneDemo',
+            meta: { title: 'SplitPane' }
+        },
+        {
+            path: 'avatar-upload',
+            component: () => import('@/views/components-demo/avatar-upload'),
+            name: 'AvatarUploadDemo',
+            meta: { title: 'Upload' }
+        },
         {
             path: 'dropzone',
             component: () => import('@/views/components-demo/dropzone'),

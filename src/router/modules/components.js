@@ -48,12 +48,12 @@ const componentsRouter = {
             name: 'DropzoneDemo',
             meta: { title: 'Dropzone' }
         },
-        // {
-        //     path: 'sticky',
-        //     component: () => import('@/views/components-demo/sticky'),
-        //     name: 'StickyDemo',
-        //     meta: { title: 'Sticky' }
-        // },
+        {
+            path: 'sticky',
+            component: () => import('@/views/components-demo/sticky'),
+            name: 'StickyDemo',
+            meta: { title: 'Sticky' }
+        },
         // {
         //     path: 'count-to',
         //     component: () => import('@/views/components-demo/count-to'),
@@ -66,12 +66,12 @@ const componentsRouter = {
         //     name: 'ComponentMixinDemo',
         //     meta: { title: 'Component Mixin' }
         // },
-        // {
-        //     path: 'back-to-top',
-        //     component: () => import('@/views/components-demo/back-to-top'),
-        //     name: 'BackToTopDemo',
-        //     meta: { title: 'Back To Top' }
-        // },
+        {
+            path: 'back-to-top',
+            component: () => import('@/views/components-demo/back-to-top'),
+            name: 'BackToTopDemo',
+            meta: { title: 'Back To Top' }
+        },
         // {
         //     path: 'drag-dialog',
         //     component: () => import('@/views/components-demo/drag-dialog'),

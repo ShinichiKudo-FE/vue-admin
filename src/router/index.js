@@ -195,6 +195,18 @@ export const asyncRoutes = [
       }
     ]
   },
+  {
+    path: '/clipboard',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/clipboard/index'),
+        name: 'ClipboardDemo',
+        meta: { title: 'Clipboard', icon: 'clipboard' }
+      }
+    ]
+  },
   // 404 页面必须放到最后
   { path: '*', redirect: '/404', hidden: true }
 ]

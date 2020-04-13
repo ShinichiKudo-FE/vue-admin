@@ -9,8 +9,8 @@ import Layout from '@/layout'
 /* Router Modules */
 import componentsRouter from './modules/components'
 import chartsRouter from './modules/charts'
-/*import tableRouter from './modules/table'
-import nestedRouter from './modules/nested' */
+/*import tableRouter from './modules/table'*/
+import nestedRouter from './modules/nested' 
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -184,6 +184,7 @@ export const asyncRoutes = [
   },
   componentsRouter,
   chartsRouter,
+  nestedRouter,
   {
     path: '/error',
     component: Layout,

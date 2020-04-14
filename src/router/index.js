@@ -279,6 +279,24 @@ export const asyncRoutes = [
       }
     ]
   },
+  {
+    path: '/pdf',
+    component: Layout,
+    redirect: '/pdf/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/pdf/index'),
+        name: 'PDF',
+        meta: { title: 'PDF', icon: 'pdf' }
+      }
+    ]
+  },
+  {
+    path: '/pdf/download',
+    component: () => import('@/views/pdf/download'),
+    hidden: true
+  },
   // 404 页面必须放到最后
   { path: '*', redirect: '/404', hidden: true }
 ]

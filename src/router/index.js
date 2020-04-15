@@ -9,7 +9,7 @@ import Layout from '@/layout'
 /* Router Modules */
 import componentsRouter from './modules/components'
 import chartsRouter from './modules/charts'
-/*import tableRouter from './modules/table'*/
+import tableRouter from './modules/table'
 import nestedRouter from './modules/nested' 
 
 /**
@@ -185,6 +185,7 @@ export const asyncRoutes = [
   componentsRouter,
   chartsRouter,
   nestedRouter,
+  tableRouter,
   {
     path: '/error',
     component: Layout,

@@ -12,12 +12,12 @@ const componentsRouter = {
         icon: 'component'
     },
     children: [
-        // {
-        //     path: 'tinymce',
-        //     component: () => import('@/views/components-demo/tinymce'),
-        //     name: 'TinymceDemo',
-        //     meta: { title: 'Tinymce' }
-        // },
+        {
+            path: 'tinymce',
+            component: () => import('@/views/components-demo/tinymce'),
+            name: 'TinymceDemo',
+            meta: { title: 'Tinymce' }
+        },
         // {
         //     path: 'markdown',
         //     component: () => import('@/views/components-demo/markdown'),

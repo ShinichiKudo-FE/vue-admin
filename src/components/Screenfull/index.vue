@@ -22,8 +22,8 @@ export default {
   },
   methods: {
     click() {
-            // screenfull 5.0.0 使用isEnabled代替enabled
-            if (!screenfull.isEnabled) {
+      // screenfull 5.0.0 使用isEnabled代替enabled
+      if (!screenfull.isEnabled) {
         this.$message({
           message: 'you browser can not work',
           type: 'warning'

@@ -5,7 +5,7 @@
     </aside>
 
     <pan-thumb :image="image">
-        <div>Hello</div>
+      <div>Hello</div>
     </pan-thumb>
 
     <el-button type="primary" icon="el-icon-upload" style="position: absolute;bottom: 15px;margin-left: 40px;" @click="imagecropperShow=true">

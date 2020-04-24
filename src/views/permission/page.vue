@@ -1,11 +1,11 @@
 <template>
-    <div class="app-container">
-        <switch-roles @change="handleRolesChange" />
-    </div>
+  <div class="app-container">
+    <switch-roles @change="handleRolesChange" />
+  </div>
 </template>
 
 <script>
-import SwitchRoles from './components/SwitchRoles' 
+import SwitchRoles from './components/SwitchRoles'
 export default {
   name: 'PagePermission',
   components: { SwitchRoles },

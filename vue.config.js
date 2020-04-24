@@ -1,3 +1,4 @@
+'use strict'
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
 
@@ -5,9 +6,9 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 const name = defaultSettings.title || 'vue Admin'
-const port = process.env.port || process.env.npm_config_port || 8888 // dev port
+const port = process.env.port || process.env.npm_config_port || 1029 // dev port
 module.exports = {
-  publicPath: './', // 打包后的页面相对路径
+  publicPath: '/',
   outputDir: 'dist', //
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development', // 在开发环境下进行eslint检查
@@ -19,18 +20,7 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    proxy: {
-      // change xxx-api/login => mock/login
-      // detail: https://cli.vuejs.org/config/#devserver-proxy
-      [process.env.VUE_APP_BASE_API]: {
-        target: `http://127.0.0.1:${port}/mock`,
-        changeOrigin: true,
-        pathRewrite: {
-          ['^' + process.env.VUE_APP_BASE_API]: ''
-        }
-      }
-    },
-    after: require('./mock/mock-server.js')
+    before: require('./mock/mock-server.js')
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that

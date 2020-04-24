@@ -29,8 +29,10 @@ export default {
   margin: 50px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   .document-btn {
     margin-left: 50px;
+    flex-shrink: 0;
     display: block;
     cursor: pointer;
     background: black;

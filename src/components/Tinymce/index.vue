@@ -68,14 +68,17 @@ export default {
       tinymceId: this.id,
       fullscreen: false,
       languageTypeList: {
-        en: 'en',
-        zh: 'zh_CN',
-        es: 'es_MX',
-        ja: 'ja'
+        'en': 'en',
+        'zh': 'zh_CN',
+        'es': 'es_MX',
+        'ja': 'ja'
       }
     }
   },
   computed: {
+    language() {
+      return this.languageTypeList[this.$store.getters.language]
+    },
     containerWidth() {
       const width = this.width
       if (/^[\d]+(\.[\d]+)?$/.test(width)) {
@@ -89,9 +92,12 @@ export default {
     value(val) {
       if (!this.hasChange && this.hasInit) {
         this.$nextTick(() =>
-          window.tinymce.get(this.tinymceId).setContent(val || '')
-        )
+          window.tinymce.get(this.tinymceId).setContent(val || ''))
       }
+    },
+    language() {
+      this.destroyTinymce()
+      this.$nextTick(() => this.initTinymce())
     }
   },
   mounted() {
@@ -111,7 +117,7 @@ export default {
   methods: {
     init() {
       // dynamic load tinymce from cdn
-      load(tinymceCDN, err => {
+      load(tinymceCDN, (err) => {
         if (err) {
           this.$message.error(err.message)
           return
@@ -122,8 +128,8 @@ export default {
     initTinymce() {
       const _this = this
       window.tinymce.init({
+        language: this.language,
         selector: `#${this.tinymceId}`,
-        language: this.languageTypeList['zh'],
         height: this.height,
         body_class: 'panel-body ',
         object_resizing: false,
@@ -151,7 +157,7 @@ export default {
           })
         },
         setup(editor) {
-          editor.on('FullscreenStateChanged', e => {
+          editor.on('FullscreenStateChanged', (e) => {
             _this.fullscreen = e.state
           })
         }

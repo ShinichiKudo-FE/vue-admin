@@ -6,7 +6,7 @@
       <AutoWidthOption v-model="autoWidth" />
       <BookTypeOption v-model="bookType" />
       <el-button :loading="downloadLoading" style="margin:0 0 20px 20px;" type="primary" icon="el-icon-document" @click="handleDownload">
-        Export Excel
+        {{ $t('excel.export') }} Excel
       </el-button>
     </div>
 

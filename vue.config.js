@@ -32,15 +32,10 @@ module.exports = {
       }
     }
   },
-  chainWebpack: (config) => {
-    // 只有在打包页面才会自动生成分析界面
-    if (process.env.NODE_ENV === 'production') {
-      // if (process.env.npm_lifecycle_event === 'analyze'){
-      config
-        .plugin('webpack-bundle-analyzer')
-        .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
-      // }
-    }
+  chainWebpack(config) {
+    config.plugins.delete('preload') // TODO: need test
+    config.plugins.delete('prefetch') // TODO: need test
+
     // set svg-sprite-loader
     config.module
       .rule('svg')
